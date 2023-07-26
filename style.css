@@ -1,0 +1,356 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600&display=swap");
+@import url("./fonts/icons/style.css");
+:root {
+  --gradient: linear-gradient(to right, #a894e6, #7e77ee);
+  --grey: #f0f0f0;
+  --transition: all 0.3s ease-in-out;
+}
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+body {
+  height: 100vh;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  font-family: "Rubik", sans-serif;
+  background-color: #e0e5eb;
+}
+.mobile {
+  width: 350px;
+  height: 700px;
+  display: grid;
+  grid-template-rows: 48px 1fr 62px;
+
+  background-color: #fff;
+  border-radius: 25px;
+  box-shadow: -5px 5px 10px rgba(0, 0, 0, 0.3);
+}
+.mobile__top,
+.mobile__bottom {
+  align-self: center;
+  justify-self: center;
+}
+.mobile__content {
+  background: #fff;
+}
+
+.rooms {
+  margin: 0 20px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  grid-gap: 14px;
+}
+.room {
+  display: grid;
+  grid-template-rows: 100px 30px;
+  align-content: center;
+  font-size: 16px;
+  text-align: center;
+  background: var(--grey);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.room.selected {
+  background: var(--gradient);
+  color: #fff;
+}
+.room.selected i {
+  opacity: 1;
+}
+.room i {
+  align-self: center;
+  font-size: 5em;
+  opacity: 0.7;
+}
+/* СТРАНИЦА НАСТРОЕК КОМНАТЫ */
+
+.settings {
+  display: none;
+  padding: 0 20px;
+}
+.settings__tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: 90px;
+  grid-gap: 14px;
+}
+.tab {
+  display: grid;
+  grid-template-rows: 2fr 1fr;
+  align-content: center;
+  font-size: 12px;
+  text-align: center;
+  background: var(--grey);
+  border-radius: 12px;
+  cursor: pointer;
+}
+.tab.selected {
+  background: var(--gradient);
+  color: #fff;
+}
+.tab.selected i {
+  opacity: 1;
+}
+.tab i {
+  align-self: center;
+  font-size: 3em;
+  opacity: 0.7;
+}
+
+/* ЭКРАНЫ НАСТРОЕК */
+.settings__screen {
+  display: none;
+}
+.settings__screen.selected {
+  display: block;
+}
+.settings__screen-title {
+  margin: 30px 0 15px;
+  text-align: center;
+  font-weight: 300;
+}
+.settings__screen-icon {
+  margin-bottom: 15px;
+  text-align: center;
+  font-size: 30px;
+  color: #666;
+}
+
+/* КНОПКА РЕГУЛИРОВКИ ТЕМПЕРАТУРЫ */
+.temperature-button {
+  width: 240px;
+  height: 240px;
+  margin: 0 auto;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  cursor: pointer;
+}
+.temperature-button__info {
+  width: 168px;
+  height: 168px;
+  position: relative;
+  font-size: 32px;
+  border-radius: 70%;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgb(0, 0, 0, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.temperature-button__info::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 4%;
+  right: 4%;
+  top: 4%;
+  bottom: 4%;
+  border-radius: 100%;
+  opacity: 0.3;
+  border: 1px solid #000;
+}
+.dots-box {
+  transform: rotate(5deg);
+  transform-origin: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+.dots,
+.line,
+.line-active,
+.round,
+.separate-lines,
+.separate-dots {
+  fill: transparent;
+  stroke: var(--grey);
+  stroke-width: 3px;
+  stroke-linecap: round;
+  stroke-dasharray: 0 21;
+}
+.line,
+.line-active,
+.round {
+  stroke-width: 1px;
+  stroke-dasharray: 276 276;
+  transform: rotate(48deg);
+  transform-origin: center;
+}
+.line-active {
+  stroke: black;
+  stroke-dasharray: 54 276; /* от 54 до 276*/
+}
+.round {
+  stroke-width: 6px;
+  stroke-dasharray: 0 276;
+  transform: rotate(-240deg); /* от -240 до 48*/
+}
+.separate-lines,
+.separate-dots {
+  stroke: #fff;
+  transform: rotate(60deg);
+  transform-origin: center;
+}
+.separate-dots {
+  stroke-dasharray: 40 313;
+}
+.separate-lines {
+  transform: rotate(49deg);
+  stroke-dasharray: 53 276;
+}
+
+/* POWER */
+.power {
+  margin: 0 auto;
+  padding-bottom: 1px;
+  width: 44px;
+  height: 44px;
+  background: var(--gradient);
+  color: #fff;
+  border-radius: 44px;
+  font-size: 24px;
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+.power.off {
+  background: var(--grey);
+}
+.power-label {
+  margin-top: 10px;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 300;
+}
+.save-button {
+  margin: 15px auto 0;
+  padding: 16px;
+  width: 250px;
+  text-align: center;
+  border-radius: 100px;
+  background: var(--gradient);
+  color: #fff;
+  cursor: pointer;
+}
+
+/* СЛАЙДЕР */
+.slider {
+  margin: 0 auto;
+  width: 100px;
+  height: 250px;
+  position: relative;
+  background-color: var(--grey);
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+}
+.slider__progress {
+  height: 45%;
+  min-height: 30px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  align-items: center;
+  justify-items: center;
+  background: var(--gradient);
+  color: #fff;
+  font-size: 18px;
+  pointer-events: none;
+}
+.slider__progress span {
+  pointer-events: none;
+}
+.switch {
+  margin: 30px auto;
+  width: 60px;
+  height: 28px;
+  position: relative;
+  border-radius: 60px;
+  background: var(--grey);
+  cursor: pointer;
+}
+.switch.off div {
+  left: 0;
+  background: #bbb;
+}
+.switch div {
+  width: 28px;
+  height: 28px;
+  left: 52%;
+  top: 0;
+  position: absolute;
+  border-radius: 60px;
+  background: var(--gradient);
+  transition: var(--transition);
+}
+
+/* UI-Components */
+.selectbox {
+  width: 143px;
+  margin: 0 auto 25px auto;
+  position: relative;
+  cursor: pointer;
+}
+.selectbox__selected {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  font-weight: 500;
+  background-color: #fff;
+}
+.selectbox.open .ic_arrow {
+  transform: rotate(-180deg);
+}
+.ic_arrow {
+  /* display необходим для transform, так как он не применяется у строчных элементов */
+  display: inline-block;
+  font-size: 0.7em;
+  margin-left: 10px;
+  transform: rotate(0deg);
+  transition: var(--transition);
+}
+.selectbox.open .selectbox__list {
+  max-height: 200px;
+  top: 120%;
+}
+.selectbox__list {
+  padding: 8px 12px;
+  position: absolute;
+  z-index: 1;
+  max-height: 0px;
+  top: 0;
+  left: -12px;
+  right: -12px;
+  overflow: hidden;
+  border-radius: 3px;
+  background-color: #fff;
+  transition: var(--transition);
+}
+.selectbox__item {
+  text-align: left;
+  cursor: pointer;
+}
+.selectbox__item.selected,
+.selectbox__item:hover {
+  color: #7e77ee;
+  font-weight: 600;
+}
+/* у всех элементов кроме последнего */
+.selectbox__item:not(:last-child) {
+  margin-bottom: 4px;
+}
+/* com+K+com+0 - светнуть все выделенные элементы */
